@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vinoteca San Expedito · Vinos y regionales de Mendoza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F1F3F0;--ink:#1E1219;--mute:#5E5560;--line:#D3D7D2;--wine:#2A0E1F;--gold:#C9953C;--snow:#E9EEF0;--vine:#3E4A2B;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#150A11;--ink:#F0E9EC;--mute:#B3A6AE;--line:#3A2A33;--wine:#1E0A16}}
+:root[data-theme="dark"]{--bg:#150A11;--ink:#F0E9EC;--mute:#B3A6AE;--line:#3A2A33;--wine:#1E0A16}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "DM Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;line-height:1.05;margin:0}
+.hero{background:var(--wine);color:#F6EEF1;position:relative;overflow:hidden;padding:56px 22px 150px}
+.wrap{max-width:980px;margin:0 auto}
+.brand{font-family:"Cormorant Garamond",Georgia,serif;font-size:22px;font-weight:600;color:var(--gold);margin-bottom:56px}
+.hero h1{font-size:clamp(46px,11vw,96px);max-width:11ch}
+.hero p{max-width:34ch;font-size:19px;color:#D9CBD1;margin:22px 0 28px}
+.btn{display:inline-block;background:var(--gold);color:#2A0E1F;font-weight:700;text-decoration:none;padding:14px 24px;border-radius:999px}
+.btn:focus-visible,.chip:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.wines{display:flex;height:10px;position:absolute;left:0;right:0;bottom:0;z-index:2}
+.wines i{flex:1}
+.mt{position:absolute;left:0;right:0;bottom:10px;height:120px;width:100%}
+section{padding:56px 22px}
+h2{font-size:clamp(34px,7vw,52px);margin-bottom:8px}
+.sub{color:var(--mute);margin:0 0 28px;max-width:52ch}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:12px}
+.chip{flex:none;border:1.5px solid var(--line);background:transparent;color:var(--ink);font:500 15px "DM Sans",system-ui,sans-serif;padding:9px 18px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--wine);border-color:var(--wine);color:#fff}
+.list{display:grid;grid-template-columns:1fr;column-gap:48px}
+@media(min-width:720px){.list{grid-template-columns:1fr 1fr}}
+.it{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
+.dot{flex:none;width:14px;height:14px;border-radius:50%;margin-top:9px}
+.it h3{font-size:27px}.it p{margin:4px 0 0;color:var(--mute);font-size:16px}
+.tags{display:flex;gap:8px;margin-top:10px}.tags span{border:1.5px solid var(--gold);border-radius:6px;padding:2px 10px;font-size:14px;font-weight:500}
+#contacto{background:var(--snow);color:#1E1219;text-align:center}
+#contacto .sub{color:#5E5560;margin-left:auto;margin-right:auto}
+#contacto .btn{background:var(--wine);color:#fff}
+footer{padding:24px 22px;text-align:center;color:var(--mute);font-size:14px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="brand">Vinoteca San Expedito</div>
+    <h1>Vinos y sabores de Mendoza</h1>
+    <p>Vinoteca y regionales: elegí tu botella, armá tu caja de alfajores o llevate un recuerdo de la tierra del sol.</p>
+    <a class="btn" href="#productos">Ver productos</a>
+  </div>
+  <svg class="mt" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 120V70L110 30l70 40 110-60 90 70 120-50 100 60 120-70 110 70 80-30 90 60v10z" fill="#3E4A2B"/><path d="M0 120V95l140-35 90 35 130-45 120 40 160-55 110 50 250-40v75z" fill="#150A11"/></svg>
+  <div class="wines" aria-hidden="true"><i style="background:#5A1230"></i><i style="background:#D98A94"></i><i style="background:#E8D38A"></i><i style="background:#F1E3B8"></i></div>
+</header>
+
+<section id="productos"><div class="wrap">
+  <h2>Nuestros productos</h2>
+  <p class="sub">Elegí una sección para ver qué tenemos. Consultanos por precios y disponibilidad.</p>
+  <div class="chips" id="chips"></div>
+  <div class="list" id="list"></div>
+</div></section>
+
+<section id="contacto"><div class="wrap">
+  <h2>¿Buscás algo en particular?</h2>
+  <p class="sub">Escribinos y te ayudamos a elegir un vino, armar un regalo o preparar un envío.</p>
+  <a class="btn" id="wa" href="#contacto">Consultar por WhatsApp</a>
+</div></section>
+<footer>Vinoteca San Expedito · Vinos y regionales de Mendoza</footer>
+
+<script>
+var WA = "5492616370752";
+if (WA) document.getElementById("wa").href = "https://wa.me/" + WA;
+var P = [
+ ["Vinos","Vinos tintos","Malbec, Cabernet Sauvignon y cortes de bodegas mendocinas.","#5A1230"],
+ ["Vinos","Vinos rosados","Frescos y frutados, ideales para el aperitivo.","#D98A94"],
+ ["Vinos","Vinos blancos","Chardonnay, Torrontés y Sauvignon Blanc.","#E8D38A"],
+ ["Vinos","Vinos espumantes","Para brindar: brut, extra brut y dulces.","#F1E3B8"],
+ ["Vinos","Licores","Licores regionales para después de la comida.","#C9953C"],
+ ["Dulces","Chocolates en rama","Barras de chocolate para regalar o para el mate.","#6B3F2A"],
+ ["Dulces","Alfajores","Cajas listas para regalar, de 6 y de 12 unidades.","#6B3F2A",["Caja x6","Caja x12"]],
+ ["Dulces","Mermeladas y dulces artesanales","Elaborados en pequeñas tandas con fruta de la región.","#B4472F"],
+ ["Almacén","Conservas artesanales","Para la picada y la mesa de todos los días.","#3E4A2B"],
+ ["Almacén","Aceites de oliva extra virgen","De la zona olivícola de Mendoza.","#8A8A2B"],
+ ["Almacén","Pastas de todo tipo","Fideos, ñoquis, ravioles y más.","#D7B25E"],
+ ["Almacén","Aceitunas verdes","Clásicas, para la picada.","#6F8A3A"],
+ ["Almacén","Aceitunas verdes rellenas","Rellenas con pimiento y otros sabores.","#6F8A3A"],
+ ["Almacén","Aceitunas negras","Carnosas y suaves.","#2B2326"],
+ ["Regalería","Cuchillos, tenedores y sacacorchos","Para el asado y para el que ama el vino.","#8C9399"]
+];
+var cats = ["Todo","Vinos","Dulces","Almacén","Regalería"], cur = "Todo";
+var chips = document.getElementById("chips"), list = document.getElementById("list");
+function render(){
+  chips.innerHTML = "";
+  cats.forEach(function(c){
+    var b = document.createElement("button");
+    b.className = "chip"; b.textContent = c === "Vinos" ? "Vinos y licores" : c === "Dulces" ? "Dulces y chocolates" : c;
+    b.setAttribute("aria-pressed", String(c === cur));
+    b.onclick = function(){ cur = c; render(); };
+    chips.appendChild(b);
+  });
+  list.innerHTML = "";
+  P.filter(function(p){ return cur === "Todo" || p[0] === cur; }).forEach(function(p){
+    var d = document.createElement("div"); d.className = "it";
+    var tags = p[4] ? '<div class="tags">' + p[4].map(function(t){ return "<span>" + t + "</span>"; }).join("") + "</div>" : "";
+    d.innerHTML = '<span class="dot" style="background:' + p[3] + '"></span><div><h3>' + p[1] + "</h3><p>" + p[2] + "</p>" + tags + "</div>";
+    list.appendChild(d);
+  });
+}
+render();
+</script>
+</body>
+</html>
