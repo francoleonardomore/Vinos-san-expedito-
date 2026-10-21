@@ -2,779 +2,775 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#4a1724">
-  <meta name="description" content="Vinoteca San Expedito. Vinos mendocinos y productos regionales en el centro de Mendoza.">
-  <title>Vinoteca San Expedito | Mendoza</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --bordo: #4a1724;
-      --bordo-claro: #702b3b;
-      --dorado: #c6a15b;
-      --crema: #f6f0e5;
-      --blanco: #fffdf8;
-      --texto: #302622;
-      --gris: #786c64;
-    }
-
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      background: var(--blanco);
-      color: var(--texto);
-      font-family: "DM Sans", sans-serif;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .aviso {
-      background: var(--bordo);
-      color: #f5e6c7;
-      padding: 9px;
-      text-align: center;
-      font-size: 12px;
-      letter-spacing: 1px;
-    }
-
-    header {
-      background: var(--blanco);
-      padding: 18px 7%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      border-bottom: 1px solid #e8ded0;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--bordo);
-    }
-
-    .sello {
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
-      border: 2px solid var(--dorado);
-      border-radius: 50%;
-      font-family: "Playfair Display", serif;
-      font-size: 19px;
-    }
-
-    .logo strong {
-      display: block;
-      letter-spacing: 3px;
-      font-size: 14px;
-    }
-
-    .logo small {
-      display: block;
-      font-size: 10px;
-      letter-spacing: 1px;
-      margin-top: 4px;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-    nav a:hover { color: var(--dorado); }
-
-    .boton {
-      display: inline-block;
-      padding: 13px 19px;
-      border: none;
-      border-radius: 3px;
-      font-weight: 700;
-      font-size: 13px;
-      cursor: pointer;
-    }
-
-    .boton-dorado {
-      background: var(--dorado);
-      color: #241812;
-    }
-
-    .boton-bordo {
-      background: var(--bordo);
-      color: white;
-    }
-
-    .portada {
-      min-height: 480px;
-      padding: 65px 9%;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 40px;
-      background: var(--crema);
-    }
-
-    .etiqueta {
-      color: var(--bordo-claro);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 3px;
-    }
-
-    h1, h2, h3 {
-      font-family: "Playfair Display", Georgia, serif;
-    }
-
-    h1 {
-      color: var(--bordo);
-      font-size: clamp(42px, 5vw, 68px);
-      line-height: 1.1;
-      margin: 20px 0;
-    }
-
-    h1 em { color: #a57a3e; }
-
-    .portada p {
-      color: var(--gris);
-      line-height: 1.8;
-      max-width: 460px;
-    }
-
-    .portada .boton { margin-top: 15px; }
-
-    .foto-portada {
-      min-height: 360px;
-      background:
-        linear-gradient(#321b1b25, #321b1b40),
-        url("https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1100&q=85")
-        center/cover;
-      display: flex;
-      align-items: end;
-      padding: 25px;
-      color: white;
-    }
-
-    .foto-portada span {
-      background: #321b1bcc;
-      padding: 12px 16px;
-      letter-spacing: 2px;
-      font-size: 11px;
-    }
-
-    .beneficios {
-      padding: 25px 8%;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      border-bottom: 1px solid #e8ded0;
-    }
-
-    .beneficios div { text-align: center; }
-
-    .beneficios strong {
-      display: block;
-      color: var(--bordo);
-      font-family: "Playfair Display", serif;
-      font-size: 17px;
-    }
-
-    .beneficios small { color: var(--gris); }
-
-    section.catalogo {
-      padding: 75px 8%;
-    }
-
-    .titulo-seccion {
-      text-align: center;
-      margin-bottom: 35px;
-    }
-
-    .titulo-seccion h2 {
-      color: var(--bordo);
-      font-size: 38px;
-      margin: 12px 0;
-    }
-
-    .titulo-seccion p {
-      color: var(--gris);
-    }
-
-    .filtros {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 30px;
-    }
-
-    .filtros button {
-      border: 1px solid #e2d5c5;
-      padding: 9px 14px;
-      background: white;
-      color: var(--bordo);
-      cursor: pointer;
-      border-radius: 30px;
-    }
-
-    .filtros button:hover,
-    .filtros button.activo {
-      background: var(--bordo);
-      color: white;
-    }
-
-    .productos {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    .producto {
-      border: 1px solid #e8ded0;
-      background: white;
-      overflow: hidden;
-    }
-
-    .producto img {
-      width: 100%;
-      height: 190px;
-      object-fit: cover;
-      background: var(--crema);
-    }
-
-    .producto-info { padding: 16px; }
-
-    .producto-info small {
-      color: #9b7a4e;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .producto h3 {
-      color: var(--bordo);
-      font-size: 19px;
-      margin: 8px 0;
-    }
-
-    .producto p {
-      color: var(--gris);
-      font-size: 13px;
-      line-height: 1.6;
-      min-height: 40px;
-    }
-
-    .precio {
-      color: var(--bordo);
-      font-size: 18px;
-      font-weight: 700;
-      margin: 15px 0;
-    }
-
-    .producto .boton { width: 100%; }
-
-    .promocion {
-      padding: 65px 10%;
-      background: var(--bordo);
-      color: #fff3e3;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 30px;
-    }
-
-    .promocion h2 {
-      font-size: 38px;
-      margin: 12px 0;
-    }
-
-    .promocion p {
-      color: #e0cfc3;
-      line-height: 1.8;
-      max-width: 500px;
-    }
-
-    .promocion .etiqueta { color: var(--dorado); }
-
-    .local {
-      padding: 75px 9%;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      align-items: center;
-    }
-
-    .local h2 {
-      color: var(--bordo);
-      font-size: 40px;
-      line-height: 1.15;
-    }
-
-    .local p {
-      color: var(--gris);
-      line-height: 1.8;
-    }
-
-    .mapa {
-      min-height: 300px;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      background:
-        linear-gradient(#e6dfd0d9, #e6dfd0d9),
-        url("https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=900&q=80")
-        center/cover;
-      padding: 25px;
-    }
-
-    .mapa-contenido {
-      background: var(--blanco);
-      padding: 25px;
-      border: 1px solid var(--dorado);
-    }
-
-    .mapa h3 { color: var(--bordo); }
-
-    footer {
-      background: #28171c;
-      color: #e8d8cc;
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    footer p { color: #c9b4a7; }
-
-    footer small {
-      display: block;
-      margin-top: 12px;
-      color: #c6a15b;
-    }
-
-    .whatsapp {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 56px;
-      height: 56px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: #198754;
-      color: white;
-      font-size: 26px;
-      box-shadow: 0 5px 20px #0003;
-      z-index: 10;
-    }
-
-    #carrito {
-      padding: 25px 8%;
-      background: var(--crema);
-      display: none;
-    }
-
-    #listaCarrito li { margin: 10px 0; }
-
-    @media (max-width: 900px) {
-      .productos { grid-template-columns: repeat(2, 1fr); }
-      .portada { padding: 45px 6%; }
-      header { padding: 16px 5%; }
-      nav { gap: 12px; }
-    }
-
-    @media (max-width: 650px) {
-      header { align-items: flex-start; flex-direction: column; }
-      nav { flex-wrap: wrap; }
-      .portada, .local { grid-template-columns: 1fr; }
-      .foto-portada { min-height: 280px; }
-      .beneficios { grid-template-columns: 1fr; }
-      .promocion { flex-direction: column; align-items: flex-start; }
-      .productos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-      .producto img { height: 145px; }
-      .producto-info { padding: 10px; }
-      .producto h3 { font-size: 16px; }
-      .producto p { font-size: 12px; }
-      .producto .boton { padding: 10px 5px; font-size: 11px; }
-      section.catalogo { padding: 55px 5%; }
-      .titulo-seccion h2, .promocion h2, .local h2 { font-size: 32px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vinoteca San Expedito | Mendoza</title>
+<meta name="description" content="Vinos mendocinos, chocolates, alfajores, aceite de oliva y productos regionales. Vinoteca San Expedito, centro de Mendoza.">
+
+<style>
+:root {
+  --vino: #641e2c;
+  --vino-oscuro: #351018;
+  --dorado: #d6b36a;
+  --crema: #faf5eb;
+  --texto: #30241f;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  background: var(--crema);
+  color: var(--texto);
+}
+
+header {
+  background: var(--vino-oscuro);
+  color: white;
+  text-align: center;
+  padding: 28px 16px;
+  border-bottom: 4px solid var(--dorado);
+}
+
+.logo {
+  font-size: 34px;
+  margin: 0;
+  color: var(--dorado);
+}
+
+header p {
+  margin: 10px 0 0;
+  font-size: 15px;
+}
+
+nav {
+  background: var(--vino);
+  padding: 12px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 12px;
+  font-size: 14px;
+}
+
+.hero {
+  min-height: 300px;
+  padding: 55px 20px;
+  text-align: center;
+  background:
+    linear-gradient(#260b0bd9, #260b0bbd),
+    url('https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1500&q=85')
+    center/cover;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero h2 {
+  font-size: clamp(30px, 5vw, 48px);
+  margin: 0 0 15px;
+  color: var(--dorado);
+}
+
+.hero p {
+  max-width: 620px;
+  line-height: 1.6;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
+  background: var(--vino);
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.btn:hover { background: var(--vino-oscuro); }
+
+.hero .btn {
+  background: var(--dorado);
+  color: #26140e;
+  font-weight: bold;
+}
+
+section {
+  padding: 35px 18px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+h2.section-title {
+  text-align: center;
+  color: var(--vino);
+  font-size: 29px;
+  margin-bottom: 10px;
+}
+
+.subtitulo {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #6e5a4f;
+}
+
+.filtros {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 22px 0;
+}
+
+.filtros button {
+  border: 1px solid var(--vino);
+  padding: 9px 14px;
+  border-radius: 25px;
+  color: var(--vino);
+  background: white;
+  cursor: pointer;
+}
+
+.filtros button.activo,
+.filtros button:hover {
+  background: var(--vino);
+  color: white;
+}
+
+.busqueda {
+  display: block;
+  width: 100%;
+  max-width: 440px;
+  padding: 12px;
+  margin: 0 auto 25px;
+  border: 1px solid #d5c6b4;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+  gap: 20px;
+}
+
+.producto {
+  background: white;
+  border: 1px solid #e5d9c9;
+  border-radius: 9px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 3px 12px #3820150b;
+}
+
+.producto img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  background: #eee5d8;
+}
+
+.producto-info {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.categoria {
+  color: #84663a;
+  text-transform: uppercase;
+  font: bold 11px Arial, sans-serif;
+  letter-spacing: 1px;
+}
+
+.producto h3 {
+  font-size: 19px;
+  margin: 8px 0;
+}
+
+.detalle {
+  color: #77685d;
+  font-size: 14px;
+  line-height: 1.4;
+  flex: 1;
+}
+
+.precio {
+  font: bold 22px Arial, sans-serif;
+  color: var(--vino);
+  margin: 15px 0;
+}
+
+.precio small {
+  display: block;
+  font-size: 12px;
+  color: #79695c;
+  font-weight: normal;
+  margin-top: 5px;
+}
+
+.producto .btn { width: 100%; }
+
+.carrito {
+  background: white;
+  border: 1px solid #e4d5c3;
+  border-radius: 9px;
+  padding: 22px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.carrito h3 { color: var(--vino); }
+
+.item-carrito {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee3d7;
+  align-items: center;
+}
+
+.item-carrito button {
+  border: none;
+  background: #f5e9e6;
+  color: var(--vino);
+  padding: 5px 9px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.total {
+  font: bold 23px Arial, sans-serif;
+  text-align: right;
+  margin: 20px 0;
+  color: var(--vino);
+}
+
+.vacio {
+  text-align: center;
+  color: #79695c;
+  padding: 12px;
+}
+
+.nota {
+  font: 13px Arial, sans-serif;
+  color: #79695c;
+  line-height: 1.5;
+}
+
+.info {
+  background: #eee3d1;
+  text-align: center;
+  padding: 30px 18px;
+  line-height: 1.8;
+}
+
+footer {
+  background: var(--vino-oscuro);
+  color: white;
+  text-align: center;
+  padding: 25px 15px;
+  line-height: 1.8;
+}
+
+footer a { color: var(--dorado); }
+
+.whatsapp {
+  position: fixed;
+  right: 17px;
+  bottom: 18px;
+  background: #25d366;
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  padding: 14px 18px;
+  font: bold 14px Arial, sans-serif;
+  box-shadow: 0 4px 12px #0003;
+  z-index: 20;
+}
+
+@media (max-width: 600px) {
+  .logo { font-size: 27px; }
+  nav a { margin: 5px 7px; display: inline-block; }
+  .productos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .producto img { height: 145px; }
+  .producto-info { padding: 11px; }
+  .producto h3 { font-size: 16px; }
+  .precio { font-size: 18px; }
+  .producto .btn { padding: 10px 5px; font-size: 13px; }
+}
+
+@media (max-width: 360px) {
+  .productos { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 
 <body>
-  <div class="aviso">
-    VINOS Y SABORES DE MENDOZA · TRADICIÓN PARA COMPARTIR
+
+<header>
+  <h1 class="logo">Vinoteca San Expedito</h1>
+  <p>Vinos, sabores y regalos de Mendoza</p>
+</header>
+
+<nav>
+  <a href="#inicio">Inicio</a>
+  <a href="#catalogo">Productos</a>
+  <a href="#carrito">Mi carrito</a>
+  <a href="#contacto">Contacto</a>
+</nav>
+
+<div class="hero" id="inicio">
+  <h2>Descubrí los sabores de Mendoza</h2>
+  <p>
+    Vinos seleccionados, chocolates, alfajores, productos regionales
+    y regalos especiales para compartir o llevar de recuerdo.
+  </p>
+  <a href="#catalogo" class="btn">Ver productos y precios</a>
+</div>
+
+<section id="catalogo">
+  <h2 class="section-title">Nuestro catálogo</h2>
+  <p class="subtitulo">Elegí tus productos y armá tu pedido.</p>
+
+  <input
+    class="busqueda"
+    id="busqueda"
+    placeholder="Buscar un producto..."
+    aria-label="Buscar productos">
+
+  <div class="filtros" id="filtros"></div>
+  <div class="productos" id="productos"></div>
+</section>
+
+<section id="carrito">
+  <h2 class="section-title">Mi carrito</h2>
+  <p class="subtitulo">Revisá tu pedido antes de enviarlo.</p>
+
+  <div class="carrito">
+    <h3>Tu pedido</h3>
+    <div id="items-carrito"></div>
+    <div class="total" id="total">Total: $0</div>
+
+    <button class="btn" style="width:100%" onclick="hacerPedido()">
+      Finalizar pedido por WhatsApp
+    </button>
+
+    <p class="nota">
+      Los precios publicados son ilustrativos y deben actualizarse.
+      Confirmaremos disponibilidad, marcas, tamaños y precio final
+      al recibir tu consulta. El envío se coordina por separado.
+    </p>
   </div>
+</section>
 
-  <header>
-    <a class="logo" href="#inicio">
-      <span class="sello">SE</span>
-      <span>
-        <strong>VINOTECA</strong>
-        <small>SAN EXPEDITO · MENDOZA</small>
-      </span>
+<section class="info" id="contacto">
+  <h2 class="section-title">Visitá nuestra vinoteca</h2>
+  <p>
+    <strong>Vinoteca San Expedito</strong><br>
+    General Espejo 415, centro de Mendoza, Argentina.<br>
+    Consultanos por marcas, tamaños, disponibilidad y regalos.
+  </p>
+
+  <a class="btn"
+     href="https://www.google.com/maps/search/?api=1&query=General+Espejo+415+Mendoza+Argentina"
+     target="_blank" rel="noopener">
+    Cómo llegar
+  </a>
+
+  <p>
+    WhatsApp:
+    <a href="https://wa.me/5492616370752">
+      +54 9 261 637-0752
     </a>
+  </p>
+</section>
 
-    <nav>
-      <a href="#catalogo">Productos</a>
-      <a href="#promociones">Promociones</a>
-      <a href="#local">Nuestro local</a>
-      <button class="boton boton-bordo" onclick="mostrarCarrito()">
-        Mi pedido (<span id="cantidad">0</span>)
+<footer>
+  <strong>Vinoteca San Expedito</strong><br>
+  General Espejo 415 · Mendoza, Argentina<br>
+  WhatsApp: <a href="https://wa.me/5492616370752">+54 9 261 637-0752</a><br>
+  Vinos y productos regionales.<br>
+  <small>Precios sujetos a actualización.</small>
+</footer>
+
+<a class="whatsapp"
+   href="https://wa.me/5492616370752?text=Hola%2C%20quisiera%20consultar%20por%20los%20productos%20de%20Vinoteca%20San%20Expedito."
+   target="_blank" rel="noopener">
+  WhatsApp
+</a>
+
+<script>
+
+// ============================================
+// CONFIGURACIÓN DE LA VINOTECA
+// ============================================
+
+const WHATSAPP = "5492616370752";
+
+// ============================================
+// CATÁLOGO DE PRODUCTOS
+// Los precios son de ejemplo y podés cambiarlos.
+// Cada producto puede tener su propia marca y tamaño.
+// ============================================
+
+const productosBase = [
+  {
+    id: 1,
+    nombre: "Vino tinto Malbec",
+    categoria: "Vinos tintos",
+    detalle: "Botella de 750 ml · Marca a elección",
+    precio: 8500,
+    imagen: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 2,
+    nombre: "Vino Cabernet Sauvignon",
+    categoria: "Vinos tintos",
+    detalle: "Botella de 750 ml · Consultar marca",
+    precio: 9200,
+    imagen: "https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 3,
+    nombre: "Vino rosado",
+    categoria: "Vinos rosados",
+    detalle: "Botella de 750 ml",
+    precio: 7500,
+    imagen: "https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 4,
+    nombre: "Vino espumante",
+    categoria: "Espumantes",
+    detalle: "Botella de 750 ml",
+    precio: 12500,
+    imagen: "https://images.unsplash.com/photo-1594372365401-3b5a9b5b9b14?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 5,
+    nombre: "Chocolate en rama",
+    categoria: "Chocolates",
+    detalle: "Caja de 250 g",
+    precio: 6500,
+    imagen: "https://images.unsplash.com/photo-1548907040-4d42faa7c8f0?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 6,
+    nombre: "Licor regional",
+    categoria: "Licores",
+    detalle: "Botella de 500 ml",
+    precio: 9500,
+    imagen: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 7,
+    nombre: "Dulce artesanal",
+    categoria: "Dulces y mermeladas",
+    detalle: "Frasco de 450 g",
+    precio: 4200,
+    imagen: "https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 8,
+    nombre: "Mermelada artesanal",
+    categoria: "Dulces y mermeladas",
+    detalle: "Frasco de 350 g",
+    precio: 3800,
+    imagen: "https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 9,
+    nombre: "Aceite de oliva extra virgen",
+    categoria: "Aceites",
+    detalle: "Botella de 500 ml",
+    precio: 8900,
+    imagen: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 10,
+    nombre: "Aceitunas verdes",
+    categoria: "Aceitunas",
+    detalle: "Frasco de 330 g",
+    precio: 3500,
+    imagen: "https://images.unsplash.com/photo-1504545102780-26774c1bb073?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 11,
+    nombre: "Aceitunas verdes rellenas",
+    categoria: "Aceitunas",
+    detalle: "Frasco de 330 g",
+    precio: 4500,
+    imagen: "https://images.unsplash.com/photo-1504545102780-26774c1bb073?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 12,
+    nombre: "Aceitunas negras",
+    categoria: "Aceitunas",
+    detalle: "Frasco de 330 g",
+    precio: 4200,
+    imagen: "https://images.unsplash.com/photo-1504545102780-26774c1bb073?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 13,
+    nombre: "Alfajores regionales",
+    categoria: "Alfajores",
+    detalle: "Caja de 6 unidades",
+    precio: 5500,
+    imagen: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 14,
+    nombre: "Cuchillo de regalo",
+    categoria: "Regalería",
+    detalle: "Modelo regional · Consultar presentación",
+    precio: 14500,
+    imagen: "https://images.unsplash.com/photo-1593618998160-e34014e67546?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 15,
+    nombre: "Juego de tenedores",
+    categoria: "Regalería",
+    detalle: "Set de regalo",
+    precio: 12000,
+    imagen: "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 16,
+    nombre: "Sacacorchos",
+    categoria: "Regalería",
+    detalle: "Accesorio para vino",
+    precio: 4500,
+    imagen: "https://images.unsplash.com/photo-1589365278144-c9e705f843ba?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 17,
+    nombre: "Conservas artesanales",
+    categoria: "Conservas",
+    detalle: "Frasco de 350 g",
+    precio: 4800,
+    imagen: "https://images.unsplash.com/photo-1471193945509-9ad0617afabf?auto=format&fit=crop&w=600&q=80"
+  }
+];
+
+// Para agregar productos de otras marcas o tamaños,
+// copiá un objeto y asignale un ID diferente.
+
+const dinero = n => new Intl.NumberFormat("es-AR", {
+  style: "currency",
+  currency: "ARS",
+  maximumFractionDigits: 0
+}).format(n);
+
+let carrito = [];
+let categoriaActiva = "Todos";
+
+function escapar(texto) {
+  return String(texto).replace(/[&<>"']/g, c => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[c]);
+}
+
+function mostrarFiltros() {
+  const categorias = [
+    "Todos",
+    ...new Set(productosBase.map(p => p.categoria))
+  ];
+
+  document.getElementById("filtros").innerHTML =
+    categorias.map(cat => `
+      <button
+        class="${cat === categoriaActiva ? "activo" : ""}"
+        onclick="filtrarCategoria('${escapar(cat)}')">
+        ${escapar(cat)}
       </button>
-    </nav>
-  </header>
+    `).join("");
+}
 
-  <main>
-    <section class="portada" id="inicio">
-      <div>
-        <span class="etiqueta">EL SABOR DE NUESTRA TIERRA</span>
-        <h1>Un buen vino.<br><em>Un gran momento.</em></h1>
-        <p>
-          Descubrí vinos mendocinos, etiquetas para cada ocasión
-          y productos regionales para regalar o disfrutar.
-          Te esperamos en el centro de Mendoza.
-        </p>
-        <a class="boton boton-dorado" href="#catalogo">EXPLORAR PRODUCTOS</a>
-      </div>
+function filtrarCategoria(cat) {
+  categoriaActiva = cat;
+  mostrarFiltros();
+  mostrarProductos();
+}
 
-      <div class="foto-portada">
-        <span>MENDOZA, ARGENTINA · TIERRA DEL MALBEC</span>
-      </div>
-    </section>
+function mostrarProductos() {
+  const busqueda = document.getElementById("busqueda")
+    .value.toLowerCase().trim();
 
-    <section class="beneficios">
-      <div>
-        <strong>✦ Selección de vinos</strong>
-        <small>Para cada gusto y ocasión</small>
-      </div>
-      <div>
-        <strong>⌖ En el centro</strong>
-        <small>General Espejo 415</small>
-      </div>
-      <div>
-        <strong>♡ Atención personalizada</strong>
-        <small>Consultanos por WhatsApp</small>
-      </div>
-    </section>
+  const lista = productosBase.filter(p => {
+    const coincideCategoria =
+      categoriaActiva === "Todos" ||
+      p.categoria === categoriaActiva;
 
-    <section class="catalogo" id="catalogo">
-      <div class="titulo-seccion">
-        <span class="etiqueta">ELEGIDOS PARA VOS</span>
-        <h2>Nuestros productos</h2>
-        <p>Elegí tus favoritos y prepará tu pedido.</p>
+    const coincideTexto =
+      (p.nombre + " " + p.categoria + " " + p.detalle)
+      .toLowerCase().includes(busqueda);
+
+    return coincideCategoria && coincideTexto;
+  });
+
+  const contenedor = document.getElementById("productos");
+
+  if (!lista.length) {
+    contenedor.innerHTML =
+      '<p class="vacio">No encontramos productos con esa búsqueda.</p>';
+    return;
+  }
+
+  contenedor.innerHTML = lista.map(p => `
+    <article class="producto">
+      <img
+        src="${escapar(p.imagen)}"
+        alt="${escapar(p.nombre)}"
+        loading="lazy"
+        onerror="this.style.display='none'">
+
+      <div class="producto-info">
+        <span class="categoria">${escapar(p.categoria)}</span>
+        <h3>${escapar(p.nombre)}</h3>
+        <p class="detalle">${escapar(p.detalle)}</p>
+
+        <div class="precio">
+          ${dinero(p.precio)}
+          <small>Precio de ejemplo · Editable</small>
+        </div>
+
+        <button class="btn" onclick="agregar(${p.id})">
+          Agregar al carrito
+        </button>
       </div>
+    </article>
+  `).join("");
+}
 
-      <div class="filtros">
-        <button class="activo" onclick="filtrar('Todos', this)">Todos</button>
-        <button onclick="filtrar('Tintos', this)">Tintos</button>
-        <button onclick="filtrar('Blancos', this)">Blancos</button>
-        <button onclick="filtrar('Espumantes', this)">Espumantes</button>
-        <button onclick="filtrar('Regionales', this)">Regionales</button>
-      </div>
+function agregar(id) {
+  const producto = productosBase.find(p => p.id === id);
+  const existente = carrito.find(p => p.id === id);
 
-      <div class="productos" id="productos"></div>
-    </section>
+  if (existente) {
+    existente.cantidad++;
+  } else {
+    carrito.push({ ...producto, cantidad: 1 });
+  }
 
-    <section class="promocion" id="promociones">
-      <div>
-        <span class="etiqueta">UN REGALO CON IDENTIDAD</span>
-        <h2>Momentos que merecen un brindis.</h2>
-        <p>
-          Armá un regalo especial con vinos y sabores regionales.
-          Consultanos por opciones, combos y disponibilidad.
-        </p>
-        <a class="boton boton-dorado" href="#" onclick="consultarRegalos(); return false;">
-          CONSULTAR REGALOS
-        </a>
-      </div>
-    </section>
+  mostrarCarrito();
+}
 
-    <section class="local" id="local">
-      <div>
-        <span class="etiqueta">TE ESPERAMOS</span>
-        <h2>Visitá Vinoteca San Expedito.</h2>
-        <p>
-          Estamos en el centro de Mendoza. Acercate para conocer
-          nuestra selección de vinos y productos regionales.
-        </p>
-        <p><strong>Dirección:</strong> General Espejo 415, Ciudad de Mendoza.</p>
-        <a class="boton boton-bordo"
-           href="https://www.google.com/maps/search/?api=1&query=General+Espejo+415+Mendoza+Argentina"
-           target="_blank" rel="noopener">
-          CÓMO LLEGAR
-        </a>
-        <p><small>Consultá por WhatsApp los horarios y la disponibilidad.</small></p>
-      </div>
+function cambiarCantidad(id, cambio) {
+  const item = carrito.find(p => p.id === id);
+  if (!item) return;
 
-      <div class="mapa">
-        <div class="mapa-contenido">
-          <span class="etiqueta">MENDOZA · ARGENTINA</span>
-          <h3>Vinoteca San Expedito</h3>
-          <p>General Espejo 415</p>
-          <a href="https://www.google.com/maps/search/?api=1&query=General+Espejo+415+Mendoza+Argentina"
-             target="_blank" rel="noopener">Ver ubicación ↗</a>
+  item.cantidad += cambio;
+
+  if (item.cantidad <= 0) {
+    carrito = carrito.filter(p => p.id !== id);
+  }
+
+  mostrarCarrito();
+}
+
+function mostrarCarrito() {
+  const contenedor = document.getElementById("items-carrito");
+
+  if (!carrito.length) {
+    contenedor.innerHTML =
+      '<p class="vacio">Tu carrito está vacío. Agregá algún producto.</p>';
+  } else {
+    contenedor.innerHTML = carrito.map(p => `
+      <div class="item-carrito">
+        <div>
+          <strong>${escapar(p.nombre)}</strong><br>
+          <small>${dinero(p.precio)} por unidad</small><br>
+          <small>Subtotal: ${dinero(p.precio * p.cantidad)}</small>
+        </div>
+
+        <div>
+          <button onclick="cambiarCantidad(${p.id}, -1)">−</button>
+          <strong> ${p.cantidad} </strong>
+          <button onclick="cambiarCantidad(${p.id}, 1)">+</button>
         </div>
       </div>
-    </section>
+    `).join("");
+  }
 
-    <section id="carrito">
-      <h2>Tu pedido</h2>
-      <ul id="listaCarrito"></ul>
-      <h3>Total estimado: <span id="total">$0</span></h3>
-      <p>La disponibilidad y los precios deben confirmarse con el local.</p>
-      <button class="boton boton-bordo" onclick="enviarPedido()">
-        ENVIAR PEDIDO POR WHATSAPP
-      </button>
-      <button class="boton" onclick="vaciarCarrito()">Vaciar carrito</button>
-    </section>
-  </main>
+  const total = carrito.reduce(
+    (suma, p) => suma + p.precio * p.cantidad, 0
+  );
 
-  <footer>
-    <div class="logo" style="justify-content:center;color:#f5e6c7">
-      <span class="sello">SE</span>
-      <span>
-        <strong>VINOTECA</strong>
-        <small>SAN EXPEDITO · MENDOZA</small>
-      </span>
-    </div>
-    <p>Vinos y sabores para compartir, en el corazón de Mendoza.</p>
-    <small>Venta de bebidas alcohólicas exclusiva para mayores de 18 años.</small>
-    <small>Prohibida la venta de bebidas alcohólicas a menores de edad.</small>
-    <p>© <span id="anio"></span> Vinoteca San Expedito</p>
-  </footer>
+  document.getElementById("total").textContent =
+    "Total: " + dinero(total);
+}
 
-  <a class="whatsapp" id="whatsappFlotante" href="#" target="_blank"
-     rel="noopener" aria-label="Contactar por WhatsApp">☏</a>
+function hacerPedido() {
+  if (!carrito.length) {
+    alert("Primero agregá algún producto al carrito.");
+    return;
+  }
 
-  <script>
-    /*
-      PERSONALIZACIÓN:
-      Cambiá el número por el WhatsApp real del negocio.
-      Usá código de país y área, solo números.
-      Ejemplo ficticio de Mendoza: 5492615551234.
-    */
-    const WHATSAPP = "5492610000000";
+  const total = carrito.reduce(
+    (suma, p) => suma + p.precio * p.cantidad, 0
+  );
 
-    /*
-      EDITÁ LOS PRODUCTOS EN ESTA LISTA.
-      Los precios de ejemplo deben cambiarse por los precios reales.
-    */
-    const productosBase = [
-      {
-        id: 1,
-        nombre: "Malbec Reserva",
-        categoria: "Tintos",
-        descripcion: "Un tinto ideal para acompañar una buena comida.",
-        precio: 12500,
-        imagen: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        id: 2,
-        nombre: "Malbec Joven",
-        categoria: "Tintos",
-        descripcion: "Frutado y versátil para compartir.",
-        precio: 7800,
-        imagen: "https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        id: 3,
-        nombre: "Cabernet Sauvignon",
-        categoria: "Tintos",
-        descripcion: "Un clásico para disfrutar en la mesa.",
-        precio: 9900,
-        imagen: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        id: 4,
-        nombre: "Vino blanco",
-        categoria: "Blancos",
-        descripcion: "Fresco y aromático, ideal para compartir.",
-        precio: 8500,
-        imagen: "https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        id: 5,
-        nombre: "Espumante Extra Brut",
-        categoria: "Espumantes",
-        descripcion: "Para celebrar momentos especiales.",
-        precio: 14500,
-        imagen: "https://images.unsplash.com/photo-1594372365401-3b5d0c8d7a7b?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        id: 6,
-        nombre: "Alfajores regionales",
-        categoria: "Regionales",
-        descripcion: "Un detalle dulce con sabor regional.",
-        precio: 4500,
-        imagen: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        id: 7,
-        nombre: "Chocolate artesanal",
-        categoria: "Regionales",
-        descripcion: "Un regalo rico para acompañar un buen vino.",
-        precio: 5200,
-        imagen: "https://images.unsplash.com/photo-1548907040-4d42e3f0b5b1?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        id: 8,
-        nombre: "Rosado mendocino",
-        categoria: "Blancos",
-        descripcion: "Ligero y fresco para disfrutar bien frío.",
-        precio: 8200,
-        imagen: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80"
-      }
-    ];
+  let mensaje =
+    "Hola, Vinoteca San Expedito. Quiero consultar por este pedido:\n\n";
 
-    let carrito = [];
-    let categoriaActual = "Todos";
+  carrito.forEach(p => {
+    mensaje += `• ${p.nombre} x ${p.cantidad} — ${dinero(p.precio * p.cantidad)}\n`;
+  });
 
-    const formatoPrecio = precio =>
-      new Intl.NumberFormat("es-AR", {
-        style: "currency",
-        currency: "ARS",
-        maximumFractionDigits: 0
-      }).format(precio);
+  mensaje += `\nTotal estimado: ${dinero(total)}`;
+  mensaje +=
+    "\n\n¿Me confirman disponibilidad, marcas, tamaños y precio final?";
 
-    function mostrarProductos(categoria = categoriaActual) {
-      categoriaActual = categoria;
-      const contenedor = document.getElementById("productos");
+  const url = "https://wa.me/" + WHATSAPP +
+    "?text=" + encodeURIComponent(mensaje);
 
-      const lista = categoria === "Todos"
-        ? productosBase
-        : productosBase.filter(p => p.categoria === categoria);
+  window.open(url, "_blank");
+}
 
-      contenedor.innerHTML = lista.map(p => `
-        <article class="producto">
-          <img src="${p.imagen}" alt="${p.nombre}" loading="lazy">
-          <div class="producto-info">
-            <small>${p.categoria}</small>
-            <h3>${p.nombre}</h3>
-            <p>${p.descripcion}</p>
-            <div class="precio">${formatoPrecio(p.precio)}</div>
-            <button class="boton boton-bordo"
-                    onclick="agregarAlCarrito(${p.id})">
-              + AGREGAR AL PEDIDO
-            </button>
-          </div>
-        </article>
-      `).join("");
-    }
+function abrirWhatsApp(event) {
+  event.preventDefault();
 
-    function filtrar(categoria, boton) {
-      document.querySelectorAll(".filtros button").forEach(b => {
-        b.classList.remove("activo");
-      });
-      boton.classList.add("activo");
-      mostrarProductos(categoria);
-    }
+  const mensaje =
+    "Hola, quisiera consultar por los productos de Vinoteca San Expedito.";
 
-    function agregarAlCarrito(id) {
-      const producto = productosBase.find(p => p.id === id);
-      const existente = carrito.find(p => p.id === id);
+  window.open(
+    "https://wa.me/" + WHATSAPP +
+    "?text=" + encodeURIComponent(mensaje),
+    "_blank"
+  );
+}
 
-      if (existente) {
-        existente.cantidad++;
-      } else {
-        carrito.push({ ...producto, cantidad: 1 });
-      }
+document.getElementById("busqueda")
+  .addEventListener("input", mostrarProductos);
 
-      actualizarCarrito();
-      alert(producto.nombre + " se agregó a tu pedido.");
-    }
+mostrarFiltros();
+mostrarProductos();
+mostrarCarrito();
 
-    function actualizarCarrito() {
-      const cantidad = carrito.reduce((s, p) => s + p.cantidad, 0);
-      const total = carrito.reduce((s, p) => s + p.precio * p.cantidad, 0);
+</script>
 
-      document.getElementById("cantidad").textContent = cantidad;
-      document.getElementById("total").textContent = formatoPrecio(total);
-
-      document.getElementById("listaCarrito").innerHTML = carrito.map(p => `
-        <li>
-          ${p.nombre} × ${p.cantidad} —
-          ${formatoPrecio(p.precio * p.cantidad)}
-          <button onclick="quitarDelCarrito(${p.id})">Quitar</button>
-        </li>
-      `).join("");
-    }
-
-    function quitarDelCarrito(id) {
-      carrito = carrito.filter(p => p.id !== id);
-      actualizarCarrito();
-    }
-
-    function mostrarCarrito() {
-      const seccion = document.getElementById("carrito");
-      seccion.style.display = seccion.style.display === "block" ? "none" : "block";
-      if (seccion.style.display === "block") {
-        seccion.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-
-    function vaciarCarrito() {
-      carrito = [];
-      actualizarCarrito();
-    }
-
-    function enviarPedido() {
-      if (carrito.length === 0) {
-        alert("Primero agregá algún producto a tu pedido.");
-        return;
-      }
-
-      if (WHATSAPP === "5492610000000") {
-        alert("Configurá el WhatsApp real en la variable WHATSAPP antes de recibir pedidos.");
-        return;
-      }
-
-      const detalle = carrito.map(p =>
-        `${p.nombre} x ${p.cantidad}: ${formatoPrecio(p.precio * p.cantidad)}`
-      ).join("\n");
-
-      const total = carrito.reduce((s, p) => s + p.precio * p.cantidad, 0);
-
-      const mensaje =
-        "Hola, Vinoteca San Expedito. Quiero consultar por este pedido:\n\n" +
-        detalle +
-        "\n\nTotal estimado: " + formatoPrecio(total) +
-        "\n¿Me confirman disponibilidad, formas de pago y entrega o retiro?";
-
-      window.open(
-        "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(mensaje),
-        "_blank"
-      );
-    }
-
-    function consultarRegalos() {
-      const mensaje = "Hola, Vinoteca San Expedito. Quisiera consultar por regalos y productos regionales.";
-      if (WHATSAPP === "5492610000000") {
-        alert("Configurá el WhatsApp real en la variable WHATSAPP.");
-        return;
-      }
-      window.open(
-        "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(mensaje),
-        "_blank"
-      );
-    }
-
-    document.getElementById("whatsappFlotante").href =
-      "https://wa.me/" + WHATSAPP +
-      "?text=" + encodeURIComponent("Hola, Vinoteca San Expedito. Quisiera hacer una consulta.");
-
-    document.getElementById("anio").textContent = new Date().getFullYear();
-
-    mostrarProductos();
-    actualizarCarrito();
-  </script>
 </body>
 </html>
