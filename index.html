@@ -3,25 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vinoteca & Regionales | Sabores de Mendoza</title>
+    <title>Vinos San Expedito | Vinoteca & Regionales</title>
     <!-- Iconos de FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts para un toque más elegante -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary: #581845; /* Tono vino / borgoña */
-            --secondary: #900C3F;
-            --accent: #C70039;
-            --dark: #2C3E50;
-            --light: #F9F9F9;
+            --primary: #4A1525; /* Borgoña profundo / Vino tinto elegante */
+            --secondary: #722F37; /* Tono vino */
+            --accent: #C5A059; /* Dorado sutil / corcho refinado */
+            --dark: #2C2C2C;
+            --light: #F4F1EA; /* Fondo color marfil / papel antiguo suave */
             --white: #FFFFFF;
+            --whatsapp: #25D366;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         body {
@@ -29,133 +32,162 @@
             color: var(--dark);
         }
 
-        /* Header */
+        /* Header con estética de cava */
         header {
             background-color: var(--primary);
             color: var(--white);
-            padding: 1.5rem 2rem;
+            padding: 1.2rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 900;
         }
 
         .logo h1 {
+            font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
+            color: #FDFBF7;
         }
 
         .logo p {
-            font-size: 0.85rem;
-            color: #ddd;
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         #cart-btn {
             background: var(--accent);
-            color: white;
+            color: var(--primary);
             border: none;
             padding: 0.6rem 1.2rem;
             border-radius: 30px;
             font-size: 1rem;
+            font-weight: 700;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         #cart-btn:hover {
-            background: #a8002e;
+            background: #d4af37;
+            transform: scale(1.05);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1200&q=80') center/cover;
+            background: linear-gradient(rgba(74, 21, 37, 0.75), rgba(44, 44, 44, 0.85)), url('https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1200&q=80') center/cover;
             color: white;
             text-align: center;
-            padding: 4rem 1rem;
+            padding: 5rem 1rem;
+            border-bottom: 4px solid var(--accent);
         }
 
         .hero h2 {
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+            color: #FDFBF7;
         }
 
         .hero p {
             font-size: 1.1rem;
-            color: #eee;
+            color: #E2DBD0;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         /* Filtros y Buscador */
         .filters-container {
             max-width: 1100px;
-            margin: 2rem auto 1rem;
+            margin: 2.5rem auto 1rem;
             padding: 0 1rem;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.2rem;
         }
 
         #search-input {
             width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid #ccc;
-            border-radius: 8px;
+            padding: 0.9rem 1.2rem;
+            border: 1px solid #D1C7BD;
+            border-radius: 12px;
             font-size: 1rem;
+            background: white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            transition: border-color 0.3s;
+        }
+
+        #search-input:focus {
+            outline: none;
+            border-color: var(--primary);
         }
 
         .categories {
             display: flex;
-            gap: 0.5rem;
+            gap: 0.6rem;
             overflow-x: auto;
             padding-bottom: 0.5rem;
         }
 
         .cat-btn {
             background: white;
-            border: 1px solid #ddd;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
+            border: 1px solid #D1C7BD;
+            color: var(--dark);
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
             cursor: pointer;
             white-space: nowrap;
-            transition: all 0.3s;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
 
         .cat-btn.active, .cat-btn:hover {
             background: var(--primary);
             color: white;
             border-color: var(--primary);
+            box-shadow: 0 4px 8px rgba(74, 21, 37, 0.2);
         }
 
-        /* Productos */
+        /* Grilla de Productos */
         .products-grid {
             max-width: 1100px;
-            margin: 0 auto 3rem;
+            margin: 0 auto 4rem;
             padding: 0 1rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
         }
 
         .product-card {
             background: white;
-            border-radius: 10px;
+            border-radius: 14px;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
             display: flex;
             flex-direction: column;
-            transition: transform 0.2s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.04);
         }
 
         .product-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
         .product-card img {
             width: 100%;
-            height: 180px;
+            height: 200px;
             object-fit: cover;
+            border-bottom: 1px solid #eee;
         }
 
         .product-info {
-            padding: 1rem;
+            padding: 1.2rem;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
@@ -163,20 +195,24 @@
         }
 
         .product-info h4 {
-            font-size: 1.1rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
             margin-bottom: 0.3rem;
+            color: var(--primary);
         }
 
         .product-info .category-tag {
             font-size: 0.75rem;
-            color: #666;
+            color: #777;
             text-transform: uppercase;
-            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
         }
 
         .product-info .price {
-            font-size: 1.2rem;
-            font-weight: bold;
+            font-size: 1.3rem;
+            font-weight: 700;
             color: var(--secondary);
             margin-bottom: 1rem;
         }
@@ -185,8 +221,8 @@
             background: var(--primary);
             color: white;
             border: none;
-            padding: 0.6rem;
-            border-radius: 5px;
+            padding: 0.7rem;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: 600;
             transition: background 0.3s;
@@ -196,17 +232,41 @@
             background: var(--secondary);
         }
 
+        /* Botón Flotante de WhatsApp permanente */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: var(--whatsapp);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            z-index: 999;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
         /* Modal del Carrito */
         .cart-modal {
             position: fixed;
             top: 0;
             right: -100%;
             width: 100%;
-            max-width: 400px;
+            max-width: 420px;
             height: 100%;
             background: white;
-            box-shadow: -4px 0 15px rgba(0,0,0,0.1);
-            transition: right 0.3s ease;
+            box-shadow: -6px 0 20px rgba(0,0,0,0.15);
+            transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1000;
             display: flex;
             flex-direction: column;
@@ -217,11 +277,18 @@
         }
 
         .cart-content {
-            padding: 2rem;
+            padding: 2.5rem 2rem 2rem;
             display: flex;
             flex-direction: column;
             height: 100%;
             position: relative;
+        }
+
+        .cart-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
         }
 
         #close-cart {
@@ -232,21 +299,22 @@
             top: 1rem;
             right: 1.5rem;
             cursor: pointer;
+            color: #666;
         }
 
         .cart-total {
             margin-top: auto;
             border-top: 1px solid #eee;
-            padding-top: 1rem;
+            padding-top: 1.2rem;
         }
 
         #checkout-whatsapp {
-            background: #25D366;
+            background: var(--whatsapp);
             color: white;
             border: none;
             width: 100%;
-            padding: 0.8rem;
-            border-radius: 8px;
+            padding: 0.9rem;
+            border-radius: 10px;
             font-size: 1rem;
             font-weight: bold;
             cursor: pointer;
@@ -254,7 +322,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            transition: background 0.3s;
         }
 
         #checkout-whatsapp:hover {
@@ -263,10 +332,11 @@
 
         footer {
             text-align: center;
-            padding: 2rem;
-            background: #222;
-            color: #aaa;
+            padding: 2.5rem;
+            background: #1F191B;
+            color: #A39B9D;
             font-size: 0.9rem;
+            border-top: 1px solid #332B2E;
         }
     </style>
 </head>
@@ -275,8 +345,8 @@
     <!-- Header / Barra Superior -->
     <header>
         <div class="logo">
-            <h1>🍷 Aromas de Cuyo</h1>
-            <p>Vinoteca & Productos Regionales</p>
+            <h1>🍷 Vinos San Expedito</h1>
+            <p>Vinoteca & Regionales</p>
         </div>
         <div class="header-actions">
             <button id="cart-btn"><i class="fa-solid fa-cart-shopping"></i> <span id="cart-count">0</span></button>
@@ -308,16 +378,21 @@
         <!-- Los productos se cargan dinámicamente con JavaScript -->
     </main>
 
+    <!-- Botón Flotante de WhatsApp permanente -->
+    <a href="https://wa.me/5492614701888?text=Hola!%20Quiero%20consultar%20sobre%20los%20productos%20de%20la%20vinoteca." class="whatsapp-float" target="_blank" title="Escribinos por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
     <!-- Carrito Flotante / Panel Lateral -->
     <div class="cart-modal" id="cart-modal">
         <div class="cart-content">
             <button id="close-cart">&times;</button>
             <h3>Tu Pedido Regional</h3>
-            <div id="cart-items">
+            <div id="cart-items" style="overflow-y: auto; max-height: 50vh; padding-right: 5px;">
                 <!-- Ítems seleccionados -->
             </div>
             <div class="cart-total">
-                <p>Total: $<span id="cart-total-price">0</span></p>
+                <p style="font-size: 1.1rem; font-weight: 600;">Total: $<span id="cart-total-price">0</span></p>
                 <button id="checkout-whatsapp"><i class="fa-brands fa-whatsapp"></i> Enviar pedido por WhatsApp</button>
             </div>
         </div>
@@ -325,7 +400,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Vinoteca & Regionales Mendoza. Hecho con pasión.</p>
+        <p>&copy; 2026 Vinos San Expedito - Mendoza, Argentina. Hecho con pasión.</p>
     </footer>
 
     <script>
@@ -358,7 +433,7 @@
         function displayProducts(productsToDisplay) {
             productsContainer.innerHTML = "";
             if (productsToDisplay.length === 0) {
-                productsContainer.innerHTML = `<p style="grid-column: 1/-1; text-align:center; padding: 2rem;">No se encontraron productos.</p>`;
+                productsContainer.innerHTML = `<p style="grid-column: 1/-1; text-align:center; padding: 2rem; color:#666;">No se encontraron productos.</p>`;
                 return;
             }
 
@@ -408,12 +483,14 @@
                 cartItem.style.justifyContent = "space-between";
                 cartItem.style.alignItems = "center";
                 cartItem.style.marginBottom = "1rem";
+                cartItem.style.borderBottom = "1px solid #f0f0f0";
+                cartItem.style.paddingBottom = "0.8rem";
                 cartItem.innerHTML = `
                     <div>
-                        <p style="font-weight:600;">${item.name}</p>
-                        <small>$${item.price} x ${item.quantity}</small>
+                        <p style="font-weight:600; font-size:0.95rem;">${item.name}</p>
+                        <small style="color:#666;">$${item.price.toLocaleString()} x ${item.quantity}</small>
                     </div>
-                    <button onclick="removeFromCart(${item.id})" style="background:none; border:none; color:red; cursor:pointer;"><i class="fa-solid fa-trash"></i></button>
+                    <button onclick="removeFromCart(${item.id})" style="background:none; border:none; color:#c0392b; cursor:pointer; font-size: 1.1rem;"><i class="fa-solid fa-trash"></i></button>
                 `;
                 cartItemsContainer.appendChild(cartItem);
             });
@@ -461,7 +538,7 @@
             let total = 0;
 
             cart.forEach(item => {
-                message += `- ${item.quantity}x ${item.name} ($${item.price * item.quantity})\n`;
+                message += `- ${item.quantity}x ${item.name} ($${(item.price * item.quantity).toLocaleString()})\n`;
                 total += item.price * item.quantity;
             });
 
